@@ -5,61 +5,41 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".SideCounter">
+    tools:context=".RotatingShape">
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Count the Sides"
-        android:layout_gravity="center"
+        android:text="Rotate The Shape"
         android:textAlignment="center"
         android:textStyle="bold"
-        android:textSize="30dp"
-        />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Show the shape"
-        android:layout_gravity="center"
-        android:onClick="showShape"
+        android:textSize="25dp"
         />
 
     <ImageView
         android:layout_width="400dp"
         android:layout_height="400dp"
-        android:id="@+id/diplayView"
         android:layout_margin="5dp"
-        android:background="#fff"
-        android:padding="5dp"
-        />
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Your Answer Display"
+        android:id="@+id/img"
         android:layout_gravity="center"
-        android:id="@+id/answerDisplay"
-        android:textAlignment="center"
-        android:textSize="20dp"
+        android:src="@drawable/square"
         />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Check Your Answer"
+        android:text="Rotate"
         android:layout_gravity="center"
-        android:onClick="checkAnswer"
+        android:onClick="rotate"
         android:layout_marginTop="20dp"
         />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
         android:text="go back"
         android:layout_marginTop="20dp"
-        android:layout_gravity="center"
         android:onClick="goback"
         />
-
 </LinearLayout>

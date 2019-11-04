@@ -8,10 +8,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import java.io.IOException;
-import java.util.Random;
 
 import io.particle.android.sdk.cloud.ParticleCloud;
 import io.particle.android.sdk.cloud.ParticleCloudSDK;
@@ -21,13 +19,14 @@ import io.particle.android.sdk.cloud.ParticleEventHandler;
 import io.particle.android.sdk.cloud.exceptions.ParticleCloudException;
 import io.particle.android.sdk.utils.Async;
 
-public class SideCounter extends AppCompatActivity {
+
+public class RotatingShape extends AppCompatActivity {
 
     private final String TAG = "JARVIS";
 
-    TextView answer;
-    ImageView displayView;
-    int correctAnswer;
+    ImageView img;
+
+    int deg = 0;
 
     private final String PARTICLE_USERNAME = "patelpranav1313@gmail.com";
     private final String PARTICLE_PASSWORD = "$Patel14";
@@ -41,38 +40,18 @@ public class SideCounter extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_side_counter);
+        setContentView(R.layout.activity_rotating_shape);
+
+        img = (ImageView) findViewById(R.id.img);
 
         ParticleCloudSDK.init(getApplicationContext());
 
         getDevices();
-
-
-        displayView = findViewById(R.id.diplayView);
-        answer = findViewById(R.id.answerDisplay);
-        correctAnswer = -1;
     }
 
-    public void showShape(View view) {
-        Random rand = new Random();
-        int n = rand.nextInt(3);
-
-        if(n == 0){
-            displayView.setImageResource(R.drawable.circle);
-            correctAnswer = 0;
-        }
-        else if(n == 1){
-            displayView.setImageResource(R.drawable.triangle);
-            correctAnswer = 3;
-        }
-        else if(n == 2){
-            displayView.setImageResource(R.drawable.square);
-            correctAnswer = 4;
-        }
-    }
-
-    public void checkAnswer(View view) {
-        getFromDevice("sid");
+    public void rotate(View view) {
+        getRotation();
+        img.setRotation(deg);
     }
 
     public void getDevices() {
@@ -99,7 +78,7 @@ public class SideCounter extends AppCompatActivity {
         });
     }
 
-    public void getFromDevice(String eventDD) {
+    public void getRotation() {
 
         if (mDevice == null) {
             Log.d(TAG, "Cannot find device");
@@ -111,7 +90,7 @@ public class SideCounter extends AppCompatActivity {
             @Override
             public Object callApi(ParticleCloud particleCloud) throws ParticleCloudException, IOException {
                 subscriptionId = ParticleCloudSDK.getCloud().subscribeToMyDevicesEvents(
-                        eventDD,  // the first argument, "eventNamePrefix", is optional
+                        "rotation",  // the first argument, "eventNamePrefix", is optional
                         new ParticleEventHandler() {
                             public void onEvent(String eventName, ParticleEvent event) {
                                 Log.d(TAG, "Received event with payload: " + event.dataPayload);
@@ -120,7 +99,7 @@ public class SideCounter extends AppCompatActivity {
                                 runOnUiThread(new Thread(new Runnable() {
                                     @Override
                                     public void run() {
-                                        answer.setText(event.dataPayload);
+                                        deg = Integer.parseInt(event.dataPayload);
                                     }
                                 }));
                             }

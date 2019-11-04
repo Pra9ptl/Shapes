@@ -1,18 +1,76 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_margin="15dp"
+    android:padding="15dp"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".StartScreen">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="30pt"
+        android:orientation="vertical"
+        android:gravity="center"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Choose your game"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            />
+    </LinearLayout>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60pt"
+        android:orientation="vertical"
+        android:gravity="center"
+        >
+        <Button
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Shape's Sides Counter"
+            android:textSize="20dp"
+            android:onClick="goShapes"
+            android:textStyle="bold"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60pt"
+        android:orientation="vertical"
+        android:gravity="center"
+        >
+        <Button
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Rotate the shape"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:onClick="gorotate"
+
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60pt"
+        android:orientation="vertical"
+        android:gravity="center"
+        >
+        <Button
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Random Mode"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:onClick="goRandom"
+            />
+    </LinearLayout>
+
+</LinearLayout>
