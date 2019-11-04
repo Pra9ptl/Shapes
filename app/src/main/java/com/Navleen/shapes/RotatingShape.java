@@ -29,8 +29,8 @@ public class RotatingShape extends AppCompatActivity {
 
     int deg = 0;
 
-    private final String PARTICLE_USERNAME = "patelpranav1313@gmail.com";
-    private final String PARTICLE_PASSWORD = "$Patel14";
+    private final String PARTICLE_USERNAME = "manubhatti2309@gmail.com";
+    private final String PARTICLE_PASSWORD = "9780360325";
 
     private final String DEVICE_ID = "1a0029001247363333343437";
 

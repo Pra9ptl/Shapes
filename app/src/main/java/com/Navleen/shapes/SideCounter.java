@@ -23,14 +23,15 @@ import io.particle.android.sdk.utils.Async;
 
 public class SideCounter extends AppCompatActivity {
 
-    private final String TAG = "JARVIS";
+    private final String TAG = "navleen";
 
     TextView answer;
     ImageView displayView;
     int correctAnswer;
+    int score;
 
-    private final String PARTICLE_USERNAME = "patelpranav1313@gmail.com";
-    private final String PARTICLE_PASSWORD = "$Patel14";
+    private final String PARTICLE_USERNAME = "manubhatti2309@gmail.com";
+    private final String PARTICLE_PASSWORD = "9780360325";
 
     private final String DEVICE_ID = "1a0029001247363333343437";
 
@@ -51,6 +52,7 @@ public class SideCounter extends AppCompatActivity {
         displayView = findViewById(R.id.diplayView);
         answer = findViewById(R.id.answerDisplay);
         correctAnswer = -1;
+        score = 0;
     }
 
     public void showShape(View view) {
@@ -120,7 +122,10 @@ public class SideCounter extends AppCompatActivity {
                                 runOnUiThread(new Thread(new Runnable() {
                                     @Override
                                     public void run() {
-                                        answer.setText(event.dataPayload);
+                                        if(correctAnswer == Integer.parseInt(event.dataPayload) == true){
+                                            score ++;
+                                        }
+                                        answer.setText(score);
                                     }
                                 }));
                             }
